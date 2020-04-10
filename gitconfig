@@ -1,18 +1,18 @@
 [include]
   path = ~/.gitconfig_local
 [color]
-	ui = true
+  ui = true
 [alias]
   st=status
-	a=add .
-	c=commit -m 
-	pu=push
-	pr=pull --rebase origin
-	prd=pull --rebase origin develop
-	prm=pull --rebase origin master
-	co=checkout
-	cod=checkout develop
-	com=checkout master
+  a=add .
+  c=commit -m 
+  pu=push
+  pr=pull --rebase origin
+  prd=pull --rebase origin develop
+  prm=pull --rebase origin master
+  co=checkout
+  cod=checkout develop
+  com=checkout master
   fe=fetch origin
 [core]
-	excludesfiles = ~/.gitignore
+  excludesfiles = ~/.gitignore
