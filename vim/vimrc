@@ -1,3 +1,4 @@
+" Plugins ---{{{
 " PlugUpdate
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
@@ -13,17 +14,16 @@ Plug 'slim-template/vim-slim'
 Plug 'vifm/vifm'
 call plug#end()
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
+" Enable built-in matchit plugin, which extends '%' functionality
+runtime macros/matchit.vim
 
+let g:rspec_command = "Dispatch bundle exec rspec -I . {spec}"
+" }}}
+
+" Basic settings ---{{{
 " Leader
 let mapleader = " "
 let maplocalleader = " "
-
-" Enable built-in matchit plugin
-runtime macros/matchit.vim
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -37,6 +37,7 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set modelines=0   " Disable modelines as a security precaution
 set nomodeline
+set foldlevelstart=0 " Fold all folders when a new file is opened
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -57,22 +58,27 @@ set expandtab
 set relativenumber
 set numberwidth=5
 
-" automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
+" Status line
+set statusline=%4l    " Current line
+set statusline+=/     " Separator
+set statusline+=%L    " Total lines
+set statusline+=\ -\  " Separator
+set statusline+=%.60f " Path to the file
 
-" This idea applies to any new mapping you create to replace an old one, and even to life in general.
-" When you want to change a habit, make it harder or impossible to do!
-inoremap <esc> <nop>
-" Disables arrows in normal and insert modes
-nnoremap <silent> <ESC>OA <Nop>
-nnoremap <silent> <ESC>OB <Nop>
-nnoremap <silent> <ESC>OC <Nop>
-nnoremap <silent> <ESC>OD <Nop>
-inoremap <silent> <ESC>OA <Nop>
-inoremap <silent> <ESC>OB <Nop>
-inoremap <silent> <ESC>OC <Nop>
-inoremap <silent> <ESC>OD <Nop>
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
 
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+" }}}
+
+" Mappings ---{{{
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
@@ -85,7 +91,25 @@ noremap <Leader>s :call RunNearestSpec()<CR>
 noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 
-" Normal mode
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" Disables ---{{{
+" This idea applies to any new mapping you create to replace an old one, and even to life in general.
+" When you want to change a habit, make it harder or impossible to do!
+inoremap <esc> <nop>
+" Disables arrows in normal and insert modes
+nnoremap <silent> <ESC>OA <Nop>
+nnoremap <silent> <ESC>OB <Nop>
+nnoremap <silent> <ESC>OC <Nop>
+nnoremap <silent> <ESC>OD <Nop>
+inoremap <silent> <ESC>OA <Nop>
+inoremap <silent> <ESC>OB <Nop>
+inoremap <silent> <ESC>OC <Nop>
+inoremap <silent> <ESC>OD <Nop>
+" }}}
+
+" Normal mode ---{{{
 nnoremap <Leader>vi :tabedit ~/.vimrc<CR>
 nnoremap <Leader>so :source $MYVIMRC<CR>
 nnoremap <Leader>u vawU
@@ -101,11 +125,13 @@ nnoremap <Leader>ddf :call delete(expand('%'))<cr>
 nnoremap <Leader><space> :noh<cr>
 nnoremap <Leader>ac :tabnew app/controllers/application_controller.rb<cr>
 nnoremap <Leader>um :tabnew app/models/user.rb<cr>
+" }}}
 
-" Visual mode
+" Visual mode ---{{{
 vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
+" }}}
 
-" Insert mode
+" Insert mode ---{{{
 inoremap jk <esc>
 inoremap kj <esc>
 inoremap jj <esc>
@@ -116,13 +142,24 @@ inoremap <c-o> <esc>o
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+" }}}
 
-" Abbreviations
+" Movement mappings ---{{{
+onoremap p i(
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap il{ :<c-u>normal! F}vi{<cr>
+" }}}
+" }}}
+
+" Abbreviations ---{{{
 iabbrev ccc context "when" do<left><left><left><left>
 iabbrev ddd describe "" do<left><left><left><left>
 iabbrev bbefore before(:each) do<enter><enter>end<up>
+" }}}
 
-" Autocommands
+" Autocommands ---{{{
 augroup filetype_ruby
   autocmd!
   autocmd FileType ruby :iabbrev <buffer> sscope scope :, -> {}<left>
@@ -134,55 +171,15 @@ augroup filetype_html
   autocmd!
   autocmd BufWritePre,BufRead *.html :normal gg=G
 augroup END
+" Vimscript file settings ---{{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
 
-" Movement mappings
-:onoremap p i(
-:onoremap in( :<c-u>normal! f(vi(<cr>
-:onoremap il( :<c-u>normal! F)vi(<cr>
-:onoremap in{ :<c-u>normal! f{vi{<cr>
-:onoremap il{ :<c-u>normal! F}vi{<cr>
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
-  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
-
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 1
-
-let g:rspec_command = "Dispatch bundle exec rspec -I . {spec}"
-
-command! Q q " Bind :Q to :q
-command! Qall qall
-command! QA qall
-command! E e
-command! W w
-command! Wq wq
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -215,6 +212,15 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
+" }}}
+
+" Commands ---{{{
+command! Q q " Bind :Q to :q
+command! Qall qall
+command! QA qall
+command! E e
+command! W w
+command! Wq wq
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -223,10 +229,24 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+" }}}
 
-if has('langmap') && exists('+langnoremap')
-  " Prevent that the langmap option applies to characters that result from a
-  " mapping.  If unset (default), this may break plugins (but it's backward
-  " compatible).
-  set langnoremap
+" Silver Searcher ---{{{
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
+  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
 endif
+
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 1
+" }}}
