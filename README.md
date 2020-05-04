@@ -17,3 +17,6 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 
 ## Command-line fuzzy finder
 `brew install fzf`
+
+## File manager
+`brew install vifm`
