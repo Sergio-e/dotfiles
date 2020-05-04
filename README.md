@@ -14,3 +14,6 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 ## tmux
 > In addition to changing the prefix key, I also recommend remapping your caps lock key to act as a control key so that the tmux prefix can be pressed with your hands still on the home row. Use the following links to help configure this:
 + [OS X: Caps Lock to Control](https://stackoverflow.com/questions/162896/emacs-on-mac-os-x-leopard-key-bindings)
+
+## Command-line fuzzy finder
+`brew install fzf`
