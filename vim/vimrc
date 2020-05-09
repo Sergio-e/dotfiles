@@ -1,13 +1,13 @@
 " Plugins ---{{{
 " PlugUpdate
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
 Plug 'vim-ruby/vim-ruby'
 Plug 'christoomey/vim-tmux-navigator'
@@ -17,6 +17,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'morhetz/gruvbox'
+Plug 'godlygeek/tabular'
+Plug 'Raimondi/delimitMate'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " Enable built-in matchit plugin, which extends '%' functionality
@@ -61,19 +64,15 @@ set expandtab
 
 " Make it obvious where 80 characters is
 " highlight ColorColumn ctermbg=18
-" set textwidth=80
-" set colorcolumn=80
+set textwidth=80
+set colorcolumn=80
 
 " Numbers
 set relativenumber
 set numberwidth=5
 
 " Status line
-set statusline=%4l    " Current line
-set statusline+=/     " Separator
-set statusline+=%L    " Total lines
-set statusline+=\ -\  " Separator
-set statusline+=%.60f " Path to the file
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Color schemes
 colorscheme gruvbox
@@ -106,6 +105,9 @@ noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 
 noremap <C-n> :NERDTreeToggle<CR>
+
+" Open fzf
+noremap <Leader>p :Files<CR> 
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -145,6 +147,9 @@ nnoremap <Leader>um :tabnew app/models/user.rb<cr>
 
 " Visual mode ---{{{
 vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
+" Alignments 
+vnoremap <Leader>= :Tab /=<CR> 
+vnoremap <Leader>: :Tab /:\zs<CR> 
 " }}}
 
 " Insert mode ---{{{
@@ -158,6 +163,21 @@ inoremap <c-o> <esc>o
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<Tab>"
+    else
+        return "\<C-p>"
+    endif
+endfunction
+inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-n>
 " }}}
 
 " Movement mappings ---{{{
@@ -173,6 +193,7 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 iabbrev ccc context "when" do<left><left><left><left>
 iabbrev ddd describe "" do<left><left><left><left>
 iabbrev bbefore before(:each) do<enter><enter>end<up>
+iabbrev bpry binding.pry
 " }}}
 
 " Autocommands ---{{{
