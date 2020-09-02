@@ -95,7 +95,7 @@ endif
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-noremap <Leader>s :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+noremap <Leader>ss :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>tt :tabnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
@@ -105,6 +105,10 @@ noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 
 noremap <C-n> :NERDTreeToggle<CR>
+
+noremap <Leader>w :w<CR>
+noremap <Leader>wq :wq<CR>
+noremap <Leader>q :q<CR>
 
 " Open fzf
 noremap <Leader>p :Files<CR> 
@@ -192,7 +196,7 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 " Abbreviations ---{{{
 iabbrev ccc context "when" do<left><left><left><left>
 iabbrev ddd describe "" do<left><left><left><left>
-iabbrev bbefore before(:each) do<enter><enter>end<up>
+iabbrev bbefore before(:each) do<enter>
 iabbrev bpry binding.pry
 " }}}
 
@@ -201,13 +205,14 @@ augroup filetype_ruby
   autocmd!
   autocmd FileType ruby :iabbrev <buffer> sscope scope :, -> {}<left>
   autocmd FileType ruby :iabbrev <buffer> rr return 
-  autocmd FileType ruby :iabbrev <buffer> rrspec require 'rails_helper'<enter><enter>Rspec.describe
+  autocmd FileType ruby :iabbrev <buffer> rrspec require 'rails_helper'<enter><enter>RSpec.describe
   autocmd FileType ruby :iabbrev <buffer> before(:each) "Ah ah ah, you didn't say the magic word"
 augroup END
 augroup filetype_html
   autocmd!
   autocmd BufWritePre,BufRead *.html :normal gg=G
 augroup END
+
 " Vimscript file settings ---{{{
 augroup filetype_vim
     autocmd!
