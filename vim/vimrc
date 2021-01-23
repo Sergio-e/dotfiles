@@ -27,6 +27,9 @@ runtime macros/matchit.vim
 
 let g:rspec_command = "Dispatch bundle exec rspec -I . {spec}"
 
+" Show hidden files
+let NERDTreeShowHidden=1
+
 " How can I open a NERDTree automatically when vim starts up if no files were specified?
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -151,6 +154,9 @@ nnoremap <Leader>um :tabnew app/models/user.rb<cr>
 
 " Visual mode ---{{{
 vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
+" Copy to clipboard
+vnoremap <Leader>z :w !pbcopy<CR>
+
 " Alignments 
 vnoremap <Leader>= :Tab /=<CR> 
 vnoremap <Leader>: :Tab /:\zs<CR> 
@@ -197,7 +203,7 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 iabbrev ccc context "when" do<left><left><left><left>
 iabbrev ddd describe "" do<left><left><left><left>
 iabbrev bbefore before(:each) do<enter>
-iabbrev bpry binding.pry
+iabbrev bpry binding.pry jj
 " }}}
 
 " Autocommands ---{{{
