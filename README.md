@@ -20,3 +20,10 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 
 ## File manager
 `brew install vifm`
+
+## Fonts
+https://github.com/larsenwork/monoid
+
+## Terminal emulator
+https://github.com/alacritty/alacritty
+https://medium.com/@pezcoder/how-i-migrated-from-iterm-to-alacritty-c50a04705f95

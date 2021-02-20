@@ -79,6 +79,9 @@ let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Color schemes
 colorscheme gruvbox
+" Enable italics, Make sure this is immediately after colorscheme
+" https://stackoverflow.com/questions/3494435/vimrc-make-comments-italic
+highlight Comment cterm=italic gui=italic
 set background=dark    " Setting dark mode
 
 " In many terminal emulators the mouse works just fine, thus enable it.
