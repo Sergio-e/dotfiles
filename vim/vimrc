@@ -74,6 +74,9 @@ set colorcolumn=80
 set relativenumber
 set numberwidth=5
 
+" Font
+set guifont=Monoid
+
 " Status line
 let g:lightline = { 'colorscheme': 'gruvbox' }
 

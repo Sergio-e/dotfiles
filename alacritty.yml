@@ -1,4 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
+import:
+ - ~/code/dotfiles/alacritty.yml
 
 # Setup term for programs to be able to use it
 env:

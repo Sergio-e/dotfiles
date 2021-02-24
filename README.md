@@ -27,3 +27,6 @@ https://github.com/larsenwork/monoid
 ## Terminal emulator
 https://github.com/alacritty/alacritty
 https://medium.com/@pezcoder/how-i-migrated-from-iterm-to-alacritty-c50a04705f95
+
+## Process manager
+https://github.com/DarthSim/overmind

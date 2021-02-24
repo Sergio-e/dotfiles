@@ -10,7 +10,9 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias cddot="cd ~/code/dotfiles/"
 alias cdsl="cd ~/code/rails/saverlife/"
+alias cdfn="cd ~/code/rails/fiscalnote-reporting/"
 
 # Git
 alias g='git'
@@ -29,7 +31,11 @@ alias rwss='rspec --exclude-pattern "**/system/*_spec.rb"'
 alias rss='bundle exec rspec'
 alias prss='bundle exec parallel_rspec spec'
 alias dev-tail='tail -f log/development.log'
-alias cred='EDITOR="atom --wait" rails credentials:edit'
+alias cred='EDITOR="vim" rails credentials:edit'
+alias cred-dev='EDITOR="vim" rails credentials:edit --environment development'
+alias cred-devcloud='EDITOR="vim" rails credentials:edit --environment devcloud'
+alias cred-stag='EDITOR="vim" rails credentials:edit --environment staging'
+alias cred-prod='EDITOR="vim" rails credentials:edit --environment production'
 alias dbm='rails db:migrate'
 alias seed='rails db:seed'
 alias dbmr='rails db:migrate:reset'
