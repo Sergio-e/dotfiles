@@ -1,0 +1,9 @@
+# /Users/sergioalvarez/.config/tmuxinator/dotfile.yml
+
+name: dotfiles
+root: ~/code/dotfiles
+
+windows:
+  - editor: vim
+  - server:
+  - vifm: vifm

@@ -39,3 +39,8 @@ alias cred-prod='EDITOR="vim" rails credentials:edit --environment production'
 alias dbm='rails db:migrate'
 alias seed='rails db:seed'
 alias dbmr='rails db:migrate:reset'
+
+# Tmuxinator
+alias muxfn='tmuxinator start rails fiscalnote-reporting port=4200'
+alias muxsl='tmuxinator start rails saverlife'
+alias muxdot='tmuxinator start dotfiles'

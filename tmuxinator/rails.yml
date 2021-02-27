@@ -1,0 +1,14 @@
+# /Users/sergioalvarez/.config/tmuxinator/rails.yml
+
+name: <%= @args[0] %>
+root: ~/code/rails/<%= @args[0] %>
+
+windows:
+  - editor: vim
+  - server:
+      layout: even-horizontal
+      panes:
+        - overmind start -p <%= @settings["port"] || 5000 %>
+        - dev-tail
+  - console: bundle exec rails c
+

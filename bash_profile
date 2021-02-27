@@ -7,6 +7,7 @@ export LDFLAGS="-L/usr/local/opt/bison/lib";
 export THRIFT="/usr/local/bin/thrift-0.9.3";
 export THRIFT_11="/usr/local/bin/thrift-0.11.0";
 export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH";
+export EDITOR="vim";
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
