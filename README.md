@@ -3,7 +3,9 @@
 # Setup
 ## Symbolic links
 A symbolic link is a special type of file that points to another file or directory.
+
 `ln -s {source-filename} {symbolic-filename}`
+
 Example: `ln -s ~/code/dotfiles/tmuxinator/rails.yml
 ~/.config/tmuxinator/rails.yml`
 
@@ -17,6 +19,7 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 # Programs
 ## Terminal emulator
 [Alacritty](https://github.com/alacritty/alacritty) - A fast, cross-platform, OpenGL terminal emulator
+
 Migrating from [iterm to Alacritty](https://medium.com/@pezcoder/how-i-migrated-from-iterm-to-alacritty-c50a04705f95)
 
 ## tmux
@@ -30,14 +33,17 @@ Migrating from [iterm to Alacritty](https://medium.com/@pezcoder/how-i-migrated-
 
 ## Vim
 [Vim](https://github.com/vim/vim) is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+
 Basic [tutorial](https://thoughtbot.com/upcase/onramp-to-vim)
 
 ## Command-line fuzzy finder
 [fzf](https://github.com/junegunn/fzf) is a general-purpose command-line fuzzy finder.
+
 `brew install fzf`
 
 ## File manager
 [Vifm](https://vifm.info/) is a file manager with curses interface, which provides Vi[m]-like environment for managing objects within file systems.
+
 `brew install vifm`
 
 ## Fonts
