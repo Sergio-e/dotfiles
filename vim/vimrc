@@ -206,8 +206,9 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 " }}}
 
 " Abbreviations ---{{{
-iabbrev ccc context "when" do<left><left><left><left>
-iabbrev ddd describe "" do<left><left><left><left>
+iabbrev ccc context 'when' do<left><left><left><left>
+iabbrev ccm context '#' do<left><left><left><left>
+iabbrev ddd describe '' do<left><left><left>
 iabbrev bbefore before(:each) do<enter>
 iabbrev bpry binding.pry jj
 " }}}
