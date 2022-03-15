@@ -8,6 +8,8 @@ export THRIFT="/usr/local/bin/thrift-0.9.3";
 export THRIFT_11="/usr/local/bin/thrift-0.11.0";
 export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH";
 export EDITOR="vim";
+export GITHUB_OAUTH_TOKEN=3950254047118f29618fc62e381cba4a5ab13ca8;
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.

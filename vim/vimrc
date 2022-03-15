@@ -20,6 +20,8 @@ Plug 'morhetz/gruvbox'
 Plug 'godlygeek/tabular'
 Plug 'Raimondi/delimitMate'
 Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " Enable built-in matchit plugin, which extends '%' functionality
@@ -77,8 +79,15 @@ set numberwidth=5
 " Font
 set guifont=Monoid
 
+" GitGutter refresh
+set updatetime=100
+
 " Status line
 let g:lightline = { 'colorscheme': 'gruvbox' }
+
+" Ale (Linting)
+let b:ale_fixers = {'ruby': ['rubocop', 'prettier']}
+let g:ale_fix_on_save = 1
 
 " Color schemes
 colorscheme gruvbox
