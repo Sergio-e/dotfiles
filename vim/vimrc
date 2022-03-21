@@ -8,6 +8,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-bundler'
 Plug 'thoughtbot/vim-rspec'
 Plug 'vim-ruby/vim-ruby'
 Plug 'christoomey/vim-tmux-navigator'
@@ -22,6 +23,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
+Plug 'pbrisbin/vim-mkdir'
 call plug#end()
 
 " Enable built-in matchit plugin, which extends '%' functionality

@@ -47,3 +47,6 @@ alias muxfn='tmuxinator start rails fiscalnote-reporting port=4200'
 alias muxsl='tmuxinator start rails saverlife'
 alias muxdot='tmuxinator start dotfiles'
 alias muxr='tmuxinator start rails'
+
+# Ctags
+alias cctags='ctags -R .'
