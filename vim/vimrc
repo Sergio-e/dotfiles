@@ -88,7 +88,7 @@ set updatetime=100
 let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Ale (Linting)
-let b:ale_fixers = {'ruby': ['rubocop', 'prettier']}
+let b:ale_fixers = {'ruby': ['rubocop', 'standardrb'], 'rust': ['rustfmt']}
 let g:ale_fix_on_save = 1
 
 " Color schemes
