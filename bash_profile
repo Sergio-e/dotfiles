@@ -7,6 +7,8 @@ export LDFLAGS="-L/usr/local/opt/bison/lib";
 export EDITOR="vim";
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+export MANPGER="sh -c 'col -bx | bat -l man -p'"
+
 # export THRIFT="/usr/local/bin/thrift-0.9.3";
 # export THRIFT_11="/usr/local/bin/thrift-0.11.0";
 # export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH";
@@ -78,7 +80,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -n"
 
 eval "$(rbenv init -)"
 
-# -> Git auto complete
+# Git auto complete ---
 # brew install bash-completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
@@ -87,7 +89,13 @@ eval "$(rbenv init -)"
 if type _git &> /dev/null; then
 	complete -o default -o nospace -F _git g;
 fi;
-# <- Git auto complete
+# --- Git auto complete
+
+# View git diff with bat ---
+gdiff() {
+    git diff --name-only --diff-filter=d | xargs bat --diff
+}
+# --- View git diff with bat
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

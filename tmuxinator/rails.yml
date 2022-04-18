@@ -8,7 +8,8 @@ windows:
   - server:
       layout: even-horizontal
       panes:
-        - overmind start -p <%= @settings["port"] || 5000 %>
+        - overmind start
         - dev-tail
   - console: bundle exec rails c
+  - git: lg
 

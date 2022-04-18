@@ -131,7 +131,7 @@ noremap <Leader>wq :wq<CR>
 noremap <Leader>q :q<CR>
 
 " Open fzf
-noremap <Leader>p :Files<CR> 
+noremap <Leader>p :Files<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -174,9 +174,9 @@ vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
 " Copy to clipboard
 vnoremap <Leader>z :w !pbcopy<CR>
 
-" Alignments 
-vnoremap <Leader>= :Tab /=<CR> 
-vnoremap <Leader>: :Tab /:\zs<CR> 
+" Alignments
+vnoremap <Leader>= :Tab /=<CR>
+vnoremap <Leader>: :Tab /:\zs<CR>
 " }}}
 
 " Insert mode ---{{{
@@ -228,7 +228,7 @@ iabbrev bpry binding.pry jj
 augroup filetype_ruby
   autocmd!
   autocmd FileType ruby :iabbrev <buffer> sscope scope :, -> {}<left>
-  autocmd FileType ruby :iabbrev <buffer> rr return 
+  autocmd FileType ruby :iabbrev <buffer> rr return
   autocmd FileType ruby :iabbrev <buffer> rrspec require 'rails_helper'<enter><enter>RSpec.describe
   autocmd FileType ruby :iabbrev <buffer> before(:each) "Ah ah ah, you didn't say the magic word"
 augroup END

@@ -16,6 +16,7 @@ alias cdfn="cd ~/code/rails/fiscalnote-reporting/"
 
 # Git
 alias g='git'
+alias lg='lazygit'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -24,7 +25,7 @@ alias sudo='sudo '
 alias b='bundle'
 alias bu='bundle update'
 alias rss='bundle exec rspec'
-alias dev-tail='tail -f log/development.log'
+alias dev-tail='tail -f log/development.log | bat --paging=never -l log'
 alias cred='EDITOR="vim" rails credentials:edit'
 alias cred-test='EDITOR="vim" rails credentials:edit --environment test'
 alias cred-dev='EDITOR="vim" rails credentials:edit --environment development'
@@ -37,7 +38,7 @@ alias dbmr='rails db:migrate:reset'
 alias rubo='bundle exec rubocop -a'
 
 # Tmuxinator
-alias muxfn='tmuxinator start rails fiscalnote-reporting port=4200'
+alias muxfn='tmuxinator start rails fiscalnote-reporting'
 alias muxsl='tmuxinator start rails saverlife'
 alias muxdot='tmuxinator start dotfiles'
 alias muxr='tmuxinator start rails'
