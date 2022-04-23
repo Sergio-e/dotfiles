@@ -25,13 +25,12 @@ unset file;
 
 ### NVM
 export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # Run 'nvm use' automatically every time there's
 # a .nvmrc file in the directory. Also, revert to default
 # version when entering a directory without .nvmrc
-#
 
 enter_directory() {
 if [[ $PWD == $PREV_PWD ]]; then
@@ -47,7 +46,7 @@ elif [[ $NVM_DIRTY = true ]]; then
 fi
 }
 
-# export PROMPT_COMMAND=enter_directory
+export PROMPT_COMMAND=enter_directory
 ### NVM
 
 # Case-insensitive globbing (used in pathname expansion)
