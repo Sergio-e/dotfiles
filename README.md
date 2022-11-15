@@ -36,6 +36,7 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 - [Delta](https://github.com/dandavison/delta) A syntax-highlighting pager for git, diff, and grep output
 - [bottom](https://github.com/ClementTsang/bottom) a process/system visualization and management application.
 - [glow](https://github.com/charmbracelet/glow) Render markdown on the CLI
+- [BetterSnapTool](https://apps.apple.com/us/app/bettersnaptool/id417375580?mt=12) easy window resize & organize
 - [Monoid](https://github.com/larsenwork/monoid) customisable coding font with alternates, ligatures and contextual positioning.
 
 <!-- TODO: Add Notion, browser, etc. -->
