@@ -1,8 +1,5 @@
 local set = vim.opt
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Softtabs, 2 spaces
 set.tabstop = 2
 set.shiftwidth = 2

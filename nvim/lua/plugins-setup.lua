@@ -27,7 +27,12 @@ end
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use { "ellisonleao/gruvbox.nvim" } -- colorscheme
+  -- colorscheme
+  use { "ellisonleao/gruvbox.nvim" }
+
+  -- better tmux and panes navigation
+  use 'christoomey/vim-tmux-navigator'
+
 
   -- Put this at the end after all plugins
   if packer_bootstrap then
