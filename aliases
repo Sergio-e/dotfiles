@@ -14,6 +14,8 @@ alias cddot="cd ~/code/dotfiles/"
 alias cdsl="cd ~/code/rails/saverlife/"
 alias cdfn="cd ~/code/rails/fiscalnote-reporting/"
 
+alias ls="exa --long --all"
+
 # Git
 alias g='git'
 alias lg='lazygit'
@@ -26,6 +28,7 @@ alias b='bundle'
 alias bu='bundle update'
 alias rss='bundle exec rspec'
 alias dev-tail='tail -f log/development.log | bat --paging=never -l log'
+alias test-tail='tail -f log/test.log | bat --paging=never -l log'
 alias cred='EDITOR="vim" rails credentials:edit'
 alias cred-test='EDITOR="vim" rails credentials:edit --environment test'
 alias cred-dev='EDITOR="vim" rails credentials:edit --environment development'
@@ -33,6 +36,7 @@ alias cred-devcloud='EDITOR="vim" rails credentials:edit --environment devcloud'
 alias cred-stag='EDITOR="vim" rails credentials:edit --environment staging'
 alias cred-prod='EDITOR="vim" rails credentials:edit --environment production'
 alias dbm='rails db:migrate'
+alias rr='rails routes'
 alias seed='rails db:seed'
 alias dbmr='rails db:migrate:reset'
 alias rubo='bundle exec rubocop -a'
