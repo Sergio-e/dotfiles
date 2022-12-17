@@ -26,7 +26,7 @@ set.backspace = "indent,eol,start"
 set.clipboard:append("unnamedplus")
 
 -- Font
-set.guifont = 'Monoid:h11'
+set.guifont = 'Hack:h11'
 
 -- Make it obvious where 80 characters is
 -- highlight ColorColumn ctermbg=18

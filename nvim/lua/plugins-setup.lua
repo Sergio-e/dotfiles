@@ -27,12 +27,38 @@ end
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  -- lua functions that many plugins use
+  use "nvim-lua/plenary.nvim"
+
   -- colorscheme
   use { "ellisonleao/gruvbox.nvim" }
 
   -- better tmux and panes navigation
   use 'christoomey/vim-tmux-navigator'
 
+  -- file explorer
+  use 'nvim-tree/nvim-tree.lua'
+  use 'nvim-tree/nvim-web-devicons'
+
+  -- statusline
+  use 'nvim-lualine/lualine.nvim'
+
+  -- fuzzy finder
+  use {'nvim-telescope/telescope.nvim', tag = '0.1.0'}
+
+  -- parsing system
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+
+  -- tpope essentials
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-rails'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-dispatch'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-endwise'
+  use 'tpope/vim-bundler'
 
   -- Put this at the end after all plugins
   if packer_bootstrap then

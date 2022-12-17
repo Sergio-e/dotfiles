@@ -17,6 +17,10 @@ vim.g.maplocalleader = " "
 -- inoremap <silent> <ESC>OD <Nop>
 
 -- Normal mode
+vim.api.nvim_set_keymap("n", "<Leader>w", ":w<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>wq", ":wq<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true })
+
 keymap.set("n", "x", '"_x"')  -- Don't copy to register on 'x'
 keymap.set("n", "<c-j>", "<c-w>j")
 keymap.set("n", "<c-k>", "<c-w>k")
@@ -34,3 +38,12 @@ keymap.set("n", "<Leader>ddf", ":call delete(expand('%'))<cr>") -- delete curren
 keymap.set("n", "<Leader><space>", ":noh<cr>")  --remove highlights after text search
 keymap.set("n", "<Leader>ac", ":tabnew app/controllers/application_controller.rb<cr>")
 keymap.set("n", "<Leader>um", ":tabnew app/models/user.rb<cr>")
+
+-- Plugins
+-- nvim-tree
+keymap.set("n", "<c-n>", ":NvimTreeToggle<CR>")
+
+-- telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>p', builtin.find_files, {})
+vim.keymap.set('n', '<leader>\\', builtin.live_grep, {})
