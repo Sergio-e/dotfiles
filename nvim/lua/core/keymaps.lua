@@ -17,6 +17,13 @@ vim.g.maplocalleader = " "
 -- inoremap <silent> <ESC>OD <Nop>
 
 -- Normal mode
+vim.api.nvim_set_keymap(
+  "n", 
+  "<Leader>v", 
+  ":vnew <C-R>=escape(expand('%:p:h'), ' ') . '/'<CR>", 
+  { noremap = true }
+)
+
 vim.api.nvim_set_keymap("n", "<Leader>w", ":w<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>wq", ":wq<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true })
@@ -38,6 +45,10 @@ keymap.set("n", "<Leader>ddf", ":call delete(expand('%'))<cr>") -- delete curren
 keymap.set("n", "<Leader><space>", ":noh<cr>")  --remove highlights after text search
 keymap.set("n", "<Leader>ac", ":tabnew app/controllers/application_controller.rb<cr>")
 keymap.set("n", "<Leader>um", ":tabnew app/models/user.rb<cr>")
+
+-- Insert mode
+vim.api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
+vim.api.nvim_set_keymap("i", "jj", "<esc>", { noremap = true })
 
 -- Plugins
 -- nvim-tree

@@ -1,6 +1,10 @@
-require('nvim.lua.plugins-setup') -- needs to be at the top
-require('nvim.lua.core.settings')
-require('nvim.lua.core.keymaps')
-require('nvim.lua.plugins.nvim-tree')
-require('nvim.lua.plugins.lualine')
-require('nvim.lua.plugins.telescope')
+require('plugins-setup') -- needs to be at the top
+require('core.settings')
+require('core.keymaps')
+require('plugins.nvim-tree')
+require('plugins.nvim-cmp')
+require('plugins.lualine')
+require('plugins.telescope')
+require('plugins.lsp.mason')
+require('plugins.lsp.lspsaga')
+require('plugins.lsp.lspconfig')

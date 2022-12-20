@@ -1,3 +1,13 @@
+<!--toc:start-->
+- [Setup](#setup)
+  - [Symbolic links](#symbolic-links)
+  - [Git](#git)
+  - [Tools](#tools)
+  - [Other](#other)
+    - [Tmux config](#tmux-config)
+    - [References](#references)
+<!--toc:end-->
+
 # Dotfiles
 
 # Setup
