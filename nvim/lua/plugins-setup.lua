@@ -81,7 +81,13 @@ return packer.startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
-	-- tpope essentials
+	-- copilot
+	use("github/copilot.vim")
+
+	-- better navigation
+	use("ggandor/leap.nvim")
+
+	-- essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use("tpope/vim-rails")
@@ -90,6 +96,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("tpope/vim-endwise")
 	use("tpope/vim-bundler")
+	use("pbrisbin/vim-mkdir")
 
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

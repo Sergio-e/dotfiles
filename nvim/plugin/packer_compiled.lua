@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -113,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -230,6 +240,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-mkdir"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/vim-mkdir",
+    url = "https://github.com/pbrisbin/vim-mkdir"
   },
   ["vim-rails"] = {
     loaded = true,
