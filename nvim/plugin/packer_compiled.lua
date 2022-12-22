@@ -231,6 +231,11 @@ _G.packer_plugins = {
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["persisted.nvim"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/persisted.nvim",
+    url = "https://github.com/olimorris/persisted.nvim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/plenary.nvim",

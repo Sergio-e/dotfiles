@@ -21,7 +21,9 @@ vim.g.maplocalleader = " "
 api.nvim_set_keymap("n", "<Leader>v", ":vnew <C-R>=escape(expand('%:p:h'), ' ') . '/'<CR>", { noremap = true })
 api.nvim_set_keymap("n", "<Leader>w", ":w<CR>", { noremap = true })
 api.nvim_set_keymap("n", "<Leader>wq", ":wq<CR>", { noremap = true })
+api.nvim_set_keymap("n", "<Leader>ww", ":wqa<CR>", { noremap = true })
 api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true })
+api.nvim_set_keymap("n", "<Leader>qq", ":qa<CR>", { noremap = true })
 
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "x", '"_x"') -- Don't copy to register on 'x'
@@ -79,3 +81,8 @@ keymap.set("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>")
 keymap.set("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>")
 keymap.set("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>")
 keymap.set("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>")
+
+-- persisted
+keymap.set("n", "<leader>ses", ":SessionSave<CR>")
+keymap.set("n", "<leader>sel", ":SessionLoad<CR>")
+keymap.set("n", "<leader>sep", ":Telescope persisted<CR>")

@@ -110,6 +110,9 @@ return packer.startup(function(use)
 	-- improve startup time
 	use("lewis6991/impatient.nvim")
 
+	-- session manager wrapper
+	use("olimorris/persisted.nvim")
+
 	-- essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
