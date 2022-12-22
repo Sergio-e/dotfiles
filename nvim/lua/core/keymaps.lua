@@ -34,7 +34,7 @@ keymap.set("n", "<Leader>d", "ddO")
 keymap.set("n", "<Leader>,", "0w")
 keymap.set("n", "<Leader>.", "$")
 keymap.set("n", "<Leader>o", "o<esc>")
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap.set("n", "<Leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<Leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<Leader>se", "<C-w>=") -- make split windows equal width
@@ -58,8 +58,24 @@ keymap.set("n", "<c-n>", ":NvimTreeToggle<CR>")
 -- telescope
 local builtin = require("telescope.builtin")
 keymap.set("n", "<leader>p", builtin.find_files, {})
-keymap.set("n", "<leader>\\", builtin.live_grep, {})
+keymap.set("n", "\\", builtin.live_grep, {})
 
 -- copilot
 keymap.set("i", "<Leader>]", "<Plug>(copilot-next)", { silent = true })
 keymap.set("i", "<Leader>[", "<Plug>(copilot-previous)", { silent = true })
+
+-- neotest
+keymap.set("n", "<leader>s", ":lua require('neotest').run.run()<CR>") -- run nearest test
+keymap.set("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>") -- run current file
+keymap.set("n", "<leader>a", ":lua require('neotest').run.run(vim.fn.getcwd())<CR>") -- run all tests
+keymap.set("n", "<leader>ta", ":lua require('neotest').run.attach()<CR>") -- attach to test
+keymap.set("n", "<leader>to", ":lua require('neotest').output.open()<CR>") -- see test output
+
+-- harpoon
+keymap.set("n", "<leader>h", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+keymap.set("n", "<leader>m", ":lua require('harpoon.mark').add_file()<CR>")
+keymap.set("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>")
+keymap.set("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>")
+keymap.set("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>")
+keymap.set("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>")
+keymap.set("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>")

@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -119,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["leap.nvim"] = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/leap.nvim",
@@ -153,6 +163,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  neotest = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-rspec"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/neotest-rspec",
+    url = "https://github.com/olimorris/neotest-rspec"
   },
   ["null-ls.nvim"] = {
     loaded = true,

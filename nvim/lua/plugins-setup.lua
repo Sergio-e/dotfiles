@@ -4,7 +4,7 @@ local ensure_packer = function()
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
 		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
+		-- vim.cmd([[packadd packer.nvim]])
 		return true
 	end
 	return false
@@ -12,12 +12,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Runs :PackerSync every time file is opened
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
 
 local status, packer = pcall(require, "packer")
 if not status then
@@ -26,6 +26,8 @@ end
 
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
+	-- :PackerSync
+	-- :PackerStatus
 
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
@@ -45,10 +47,10 @@ return packer.startup(function(use)
 
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- parsing system
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
@@ -86,6 +88,18 @@ return packer.startup(function(use)
 
 	-- better navigation
 	use("ggandor/leap.nvim")
+	use("ThePrimeagen/harpoon")
+
+	-- tests
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"olimorris/neotest-rspec",
+		},
+	})
 
 	-- essentials
 	use("tpope/vim-surround")

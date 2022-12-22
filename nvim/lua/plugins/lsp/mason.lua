@@ -35,9 +35,9 @@ mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
 	ensure_installed = {
 		"standardrb", -- ruby formatter
+		"erb_lint", -- erb linter
 		"stylua", -- lua formatter
 		"prettier", -- ts/js formatter
-		"eslint_d", -- ts/js linter
 		"fixjson", -- json formatter
 		"yamlfmt", -- yaml formatter
 	},
