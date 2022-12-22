@@ -1,4 +1,5 @@
 require("plugins-setup") -- needs to be at the top
+require("impatient")
 require("core.settings")
 require("core.keymaps")
 require("plugins.nvim-tree")
@@ -10,6 +11,7 @@ require("plugins.treesitter")
 require("plugins.gitsigns")
 require("plugins.leap")
 require("plugins.neotest")
+require("plugins.alpha")
 require("plugins.lsp.mason")
 require("plugins.lsp.lspsaga")
 require("plugins.lsp.lspconfig")
