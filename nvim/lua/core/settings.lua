@@ -16,22 +16,28 @@ set.cursorline = true
 
 -- Appearance
 set.termguicolors = true
-set.background = 'dark'
-set.signcolumn = 'yes'
+set.background = "dark"
+set.signcolumn = "yes"
 
 -- Backspace
 set.backspace = "indent,eol,start"
+
+-- Backup
+-- set.noswapfile = true -- http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+
+-- Autowrite
+set.autowrite = true -- Automatically :write before running commands
 
 -- Clipboard
 set.clipboard:append("unnamedplus")
 
 -- Font
-set.guifont = 'Hack:h11'
+set.guifont = "Hack:h11"
 
 -- Make it obvious where 80 characters is
 -- highlight ColorColumn ctermbg=18
 set.textwidth = 80
-set.colorcolumn = '80'
+set.colorcolumn = "80"
 
 -- So that hello-hello is considered a single word
 set.iskeyword:append("-")
@@ -39,6 +45,6 @@ set.iskeyword:append("-")
 -- Colorscheme
 local status, _ = pcall(vim.cmd, "colorscheme gruvbox")
 if not status then
-  print("Colorscheme not found")
-  return
+	print("Colorscheme not found")
+	return
 end

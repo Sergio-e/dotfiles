@@ -113,6 +113,10 @@ return packer.startup(function(use)
 	-- session manager wrapper
 	use("olimorris/persisted.nvim")
 
+  -- notes, wiki
+  use("vimwiki/vimwiki")
+  use("folke/zen-mode.nvim")
+
 	-- essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
@@ -123,6 +127,7 @@ return packer.startup(function(use)
 	use("tpope/vim-endwise")
 	use("tpope/vim-bundler")
 	use("pbrisbin/vim-mkdir")
+	use("dhruvasagar/vim-zoom")
 
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

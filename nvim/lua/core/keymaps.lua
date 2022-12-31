@@ -26,7 +26,7 @@ api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true })
 api.nvim_set_keymap("n", "<Leader>qq", ":qa<CR>", { noremap = true })
 
 keymap.set("n", "Q", "<nop>")
-keymap.set("n", "x", '"_x"') -- Don't copy to register on 'x'
+-- keymap.set("n", "x", '"_x"') -- Don't copy to register on 'x'
 keymap.set("n", "<c-j>", "<c-w>j")
 keymap.set("n", "<c-k>", "<c-w>k")
 keymap.set("n", "<c-h>", "<c-w>h")
@@ -40,6 +40,7 @@ keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Lef
 keymap.set("n", "<Leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<Leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<Leader>se", "<C-w>=") -- make split windows equal width
+keymap.set("n", "<Leader>dcc", ":set colorcolumn=\"\"<cr>") -- hide color column
 keymap.set("n", "<Leader>ddf", ":call delete(expand('%'))<cr>") -- delete current file
 keymap.set("n", "<Leader><space>", ":noh<cr>") --remove highlights after text search
 keymap.set("n", "<Leader>ac", ":tabnew app/controllers/application_controller.rb<cr>")
@@ -66,6 +67,9 @@ keymap.set("n", "\\", builtin.live_grep, {})
 keymap.set("i", "<Leader>]", "<Plug>(copilot-next)", { silent = true })
 keymap.set("i", "<Leader>[", "<Plug>(copilot-previous)", { silent = true })
 
+-- zoom
+keymap.set("n", "<Leader>z", "<Plug>(zoom-toggle)")
+
 -- neotest
 keymap.set("n", "<leader>s", ":lua require('neotest').run.run()<CR>") -- run nearest test
 keymap.set("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>") -- run current file
@@ -86,3 +90,9 @@ keymap.set("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>")
 keymap.set("n", "<leader>ses", ":SessionSave<CR>")
 keymap.set("n", "<leader>sel", ":SessionLoad<CR>")
 keymap.set("n", "<leader>sep", ":Telescope persisted<CR>")
+
+-- wiki
+keymap.set("n", "<leader>kk", ":VimwikiTabIndex<CR>")
+
+-- zenmode
+keymap.set("n", "<leader>zz", ":ZenMode<CR>")

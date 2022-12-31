@@ -300,6 +300,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["vim-zoom"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/vim-zoom",
+    url = "https://github.com/dhruvasagar/vim-zoom"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/Users/sergioalvarez/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 

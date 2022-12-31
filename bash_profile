@@ -78,6 +78,7 @@ fi;
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -n"
 
 eval "$(rbenv init -)"
+eval "$(zoxide init bash)"
 
 # Git auto complete ---
 # brew install bash-completion

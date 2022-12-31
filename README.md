@@ -1,17 +1,16 @@
+# Dotfiles
+
 <!--toc:start-->
-- [Setup](#setup)
+
+- [Dotfiles](#dotfiles)
   - [Symbolic links](#symbolic-links)
   - [Git](#git)
   - [Tools](#tools)
-  - [Other](#other)
-    - [Tmux config](#tmux-config)
-    - [References](#references)
-<!--toc:end-->
+  - [Other](#other) - [Tmux config](#tmux-config) - [References](#references)
+  <!--toc:end-->
 
-# Dotfiles
-
-# Setup
 ## Symbolic links
+
 A symbolic link is a special type of file that points to another file or directory.
 
 `ln -s {source-filename} {symbolic-filename}`
@@ -20,7 +19,9 @@ Example: `ln -s ~/code/dotfiles/tmuxinator/rails.yml
 ~/.config/tmuxinator/rails.yml`
 
 ## Git
+
 Create a file in `~/` called `.gitconfig_local` and add the values you don't want committed or made public in your .gitconfig file. In this case:
+
 ```
     [user]
           name = First Last
@@ -28,6 +29,7 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 ```
 
 ## Tools
+
 - [Alacritty](https://github.com/alacritty/alacritty) - A fast, cross-platform, OpenGL terminal emulator
 - [Vim](https://github.com/vim/vim) is a highly configurable text editor built to make creating and changing any kind of text very efficient.
 - [tmux](https://github.com/tmux/tmux) is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen.
@@ -52,12 +54,15 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 <!-- TODO: Add Notion, browser, etc. -->
 
 ## Other
+
 ### Tmux config
+
 > In addition to changing the prefix key, I also recommend remapping your caps lock key to act as a control key so that the tmux prefix can be pressed with your hands still on the home row. Use the following links to help configure this:
-+ [OS X: Caps Lock to Control](https://stackoverflow.com/questions/162896/emacs-on-mac-os-x-leopard-key-bindings)
+
+- [OS X: Caps Lock to Control](https://stackoverflow.com/questions/162896/emacs-on-mac-os-x-leopard-key-bindings)
 
 ### References
+
 - [Upcase](https://thoughtbot.com/upcase/)
 - [Command line tools](https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/)
 - [Modern Unix](https://github.com/ibraheemdev/modern-unix)
-
