@@ -20,7 +20,7 @@ null_ls.setup({
 		formatting.erb_lint,
 		formatting.trim_whitespace,
 		diagnostics.erb_lint,
-		diagnostics.standardrb,
+		-- diagnostics.standardrb,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

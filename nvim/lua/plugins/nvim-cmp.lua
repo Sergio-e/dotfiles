@@ -24,7 +24,7 @@ cmp.setup({
     ["<C-j>"] = cmp.mapping.select_prev_item(),
     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-p>"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" }, -- lsp

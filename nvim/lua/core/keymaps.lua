@@ -49,6 +49,7 @@ keymap.set("n", "<Leader>um", ":tabnew app/models/user.rb<cr>")
 -- Insert mode
 api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
 api.nvim_set_keymap("i", "jj", "<esc>", { noremap = true })
+api.nvim_set_keymap("i", "kk", "<esc>", { noremap = true })
 
 -- Visual mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -85,6 +86,8 @@ keymap.set("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>")
 keymap.set("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>")
 keymap.set("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>")
 keymap.set("n", "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>")
+keymap.set("n", "<leader>6", ":lua require('harpoon.ui').nav_file(6)<CR>")
+keymap.set("n", "<leader>7", ":lua require('harpoon.ui').nav_file(7)<CR>")
 
 -- persisted
 keymap.set("n", "<leader>ses", ":SessionSave<CR>")

@@ -46,7 +46,8 @@ lspconfig["solargraph"].setup({
 	on_attach = on_attach,
 	settings = {
 		solargraph = {
-			diagnostics = true,
+			diagnostics = false,
+			formatting = true,
 		},
 	},
 })

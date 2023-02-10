@@ -9,6 +9,9 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export MANPGER="sh -c 'col -bx | bat -l man -p'"
 
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # export THRIFT="/usr/local/bin/thrift-0.9.3";
 # export THRIFT_11="/usr/local/bin/thrift-0.11.0";
 # export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH";
