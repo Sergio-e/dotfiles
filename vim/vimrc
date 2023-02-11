@@ -25,19 +25,20 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'github/copilot.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'justinmk/vim-sneak'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " Enable built-in matchit plugin, which extends '%' functionality
 runtime macros/matchit.vim
 
 let g:rspec_command = "Dispatch bundle exec rspec -I . {spec}"
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-" Show hidden files
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
 let NERDTreeShowHidden=1
-
-" How can I open a NERDTree automatically when vim starts up if no files were specified?
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " }}}
 
 " Basic settings ---{{{
@@ -59,6 +60,11 @@ set modelines=0   " Disable modelines as a security precaution
 set nomodeline
 set foldlevelstart=0 " Fold all folders when a new file is opened
 set termguicolors " support true color terminal
+
+" For vim wiki
+set nocompatible
+filetype plugin on
+syntax on
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -130,6 +136,10 @@ noremap <C-n> :NERDTreeToggle<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>wq :wq<CR>
 noremap <Leader>q :q<CR>
+
+" goyo
+noremap <Leader>zz :Goyo<CR>
+noremap <Leader>zq :Goyo!<CR>
 
 " Open fzf
 noremap <Leader>p :Files<CR>
