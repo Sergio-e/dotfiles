@@ -7,7 +7,7 @@
 [alias]
   st=status
   a=add .
-  c=commit -m 
+  c=commit -m
   pu=push
   pr=pull --rebase origin
   pru=pull --rebase upstream
@@ -20,7 +20,7 @@
   feu=fetch upstream
 [core]
   editor = vim
-  excludesfiles = ~/.gitignore
+  excludesfiles = ~/gitignore
   pager = delta
 
 [interactive]

@@ -1,6 +1,5 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/code/dotfiles/bin:$PATH";
-
 export PATH="/usr/local/opt/bison/bin:$PATH";
 export LDFLAGS="-L/usr/local/opt/bison/lib";
 
@@ -11,10 +10,7 @@ export MANPGER="sh -c 'col -bx | bat -l man -p'"
 
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# export THRIFT="/usr/local/bin/thrift-0.9.3";
-# export THRIFT_11="/usr/local/bin/thrift-0.11.0";
-# export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH";
+export PATH="/opt/homebrew/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -100,19 +96,10 @@ gdiff() {
 }
 # --- View git diff with bat
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/miniconda2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/miniconda2/etc/profile.d/conda.sh" ]; then
-#         . "/opt/miniconda2/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/miniconda2/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2025-04-26 15:08:22
+export PATH="$PATH:/Users/sergioalvarez/.local/bin"
+
+# Added by Windsurf
+export PATH="/Users/sergioalvarez/.codeium/windsurf/bin:$PATH"

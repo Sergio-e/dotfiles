@@ -28,7 +28,7 @@ font:
     style: Italic
 
   # Font size
-  size: 16.0
+  size: 18.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing
@@ -66,6 +66,15 @@ key_bindings:
   - { key: RBracket, mods: Command, chars: "\x5c\x6e" }
   # ctrl-^ doesn't work in some terminals like alacritty
   - { key: Key6, mods: Control, chars: "\x1e" }
+
+  # Vim-style navigation
+  - { key: H, mods: Alt, action: ScrollToBottom }
+  - { key: L, mods: Alt, action: ScrollToTop }
+  - { key: J, mods: Alt, action: ScrollLineDown }
+  - { key: K, mods: Alt, action: ScrollLineUp }
+  - { key: U, mods: Alt, action: ScrollPageUp }
+  - { key: D, mods: Alt, action: ScrollPageDown }
+  - { key: V, mods: Alt, action: ToggleViMode } # Copy mode (similar to Vim visual mode)
 
 # Colors (Gruvbox dark)
 colors:

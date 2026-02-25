@@ -9,6 +9,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-ragtag'
 Plug 'thoughtbot/vim-rspec'
 Plug 'vim-ruby/vim-ruby'
 Plug 'christoomey/vim-tmux-navigator'
@@ -16,6 +17,8 @@ Plug 'slim-template/vim-slim'
 Plug 'vifm/vifm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'morhetz/gruvbox'
 Plug 'godlygeek/tabular'
@@ -24,10 +27,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
-Plug 'junegunn/goyo.vim'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 call plug#end()
 
 " Enable built-in matchit plugin, which extends '%' functionality
@@ -78,8 +82,16 @@ set expandtab
 
 " Make it obvious where 80 characters is
 " highlight ColorColumn ctermbg=18
-set textwidth=80
+set textwidth=0
 set colorcolumn=80
+autocmd BufRead,BufNewFile *.md setlocal textwidth=0
+autocmd BufRead,BufNewFile *.md setlocal colorcolumn=0
+
+" Enable folding
+set foldmethod=syntax
+set foldlevel=1
+" Don't fold by default when opening a file
+set foldlevelstart=99
 
 " Numbers
 set relativenumber
@@ -95,8 +107,43 @@ set updatetime=100
 let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Ale (Linting)
-let g:ale_fixers = {'ruby': ['rubocop'], 'rust': ['rustfmt'], '*': ['remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\  'ruby': ['rubocop'],
+\  'rust': ['rustfmt'],
+\  'javascript': ['standard'],
+\  '*': ['remove_trailing_lines', 'trim_whitespace']
+\}
+let g:ale_linters = {
+\  'ruby': ['rubocop'],
+\  'javascript': ['standard'],
+\  'eruby': ['herb'],
+\  'erb': ['herb']
+\}
+let g:ale_fix_on_save = 0
+let g:ale_lint_on_save = 0
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
+" Define the herb linter
+call ale#linter#Define('eruby', {
+\   'name': 'herb',
+\   'lsp': 'stdio',
+\   'executable': 'herb-language-server',
+\   'command': '%e --stdio',
+\   'project_root': function('ale#ruby#FindProjectRoot'),
+\   'language': 'eruby',
+\})
+" Also define for erb filetype
+call ale#linter#Define('erb', {
+\   'name': 'herb',
+\   'lsp': 'stdio',
+\   'executable': 'herb-language-server',
+\   'command': '%e --stdio',
+\   'project_root': function('ale#ruby#FindProjectRoot'),
+\   'language': 'eruby',
+\})
 
 " Color schemes
 colorscheme gruvbox
@@ -109,6 +156,22 @@ set background=dark    " Setting dark mode
 if has('mouse')
   set mouse=a
 endif
+
+" Goyo
+function! s:goyo_enter()
+  " Disable plugins here
+  ALEDisable
+  Copilot disable
+  Limelight
+endfunction
+function! s:goyo_leave()
+  " Re-enable plugins here
+  ALEEnable
+  Copilot enable
+  Limelight!
+endfunction
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -123,6 +186,7 @@ endif
 " uses expression to extract path from current file's path
 noremap <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 noremap <Leader>ss :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+noremap <Leader>rr :w <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>v :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 noremap <Leader>tt :tabnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
@@ -143,6 +207,10 @@ noremap <Leader>zq :Goyo!<CR>
 
 " Open fzf
 noremap <Leader>p :Files<CR>
+
+" Remap copilot suggestions
+" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -179,6 +247,11 @@ nnoremap <Leader>ddf :call delete(expand('%'))<cr>
 nnoremap <Leader><space> :noh<cr>
 nnoremap <Leader>ac :tabnew app/controllers/application_controller.rb<cr>
 nnoremap <Leader>um :tabnew app/models/user.rb<cr>
+
+" ctags
+nnoremap <Leader>l <C-]>
+nnoremap <Leader>ll g]
+
 " }}}
 
 " Visual mode ---{{{
@@ -193,7 +266,6 @@ vnoremap <Leader>: :Tab /:\zs<CR>
 
 " Insert mode ---{{{
 inoremap jk <esc>
-inoremap kj <esc>
 inoremap jj <esc>
 inoremap kk <esc>
 inoremap <c-d> <esc>ddi
@@ -203,8 +275,8 @@ inoremap <c-o> <esc>o
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-imap <silent> <Leader>] <Plug>(copilot-next)
-imap <silent> <Leader>[ <Plug>(copilot-previous)
+" imap <silent> <Leader>] <Plug>(copilot-next)
+" imap <silent> <Leader>[ <Plug>(copilot-previous)
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -232,9 +304,9 @@ onoremap il{ :<c-u>normal! F}vi{<cr>
 " }}}
 
 " Abbreviations ---{{{
-iabbrev ccc context 'when' do<left><left><left><left>
+iabbrev ccc context "when" do<left><left><left><left>
 iabbrev ccm context '#' do<left><left><left><left>
-iabbrev ddd describe '' do<left><left><left>
+iabbrev ddd describe "" do<left><left><left>
 iabbrev bbefore before(:each) do<enter>
 iabbrev bpry binding.pry jj
 " }}}
@@ -251,6 +323,7 @@ augroup filetype_html
   autocmd!
   autocmd BufWritePre,BufRead *.html :normal gg=G
 augroup END
+autocmd FileType markdown setlocal linebreak
 
 " Vimscript file settings ---{{{
 augroup filetype_vim
