@@ -20,7 +20,7 @@
   feu=fetch upstream
 [core]
   editor = vim
-  excludesfiles = ~/gitignore
+  excludesfile = ~/.gitignore
   pager = delta
 
 [interactive]
@@ -45,6 +45,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = Sergio-e
-	email = 33036058+Sergio-e@users.noreply.github.com
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
