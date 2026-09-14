@@ -30,7 +30,6 @@ Plug 'pbrisbin/vim-mkdir'
 " Plug 'github/copilot.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
-Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
@@ -41,8 +40,15 @@ let g:rspec_command = "Dispatch bundle exec rspec -I . {spec}"
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+" Skipped in diff mode and when vim is invoked as a git editor.
 let NERDTreeShowHidden=1
+augroup nerdtree_start
+  autocmd!
+  autocmd VimEnter *
+    \ if !&diff && expand('%:t') !~# '^\(COMMIT_EDITMSG\|MERGE_MSG\|git-rebase-todo\)$' |
+    \   NERDTree | wincmd p |
+    \ endif
+augroup END
 " }}}
 
 " Basic settings ---{{{
@@ -62,18 +68,13 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set modelines=0   " Disable modelines as a security precaution
 set nomodeline
-set foldlevelstart=0 " Fold all folders when a new file is opened
-set foldmethod=manual
 set termguicolors " support true color terminal
-
-" For vim wiki
-set nocompatible
-filetype plugin on
-syntax on
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype plugin on
+syntax on
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -81,18 +82,23 @@ set shiftwidth=2
 set shiftround
 set expandtab
 set list
+set listchars=tab:▸\ ,trail:·,nbsp:+,extends:>,precedes:<
 
 " Make it obvious where 80 characters is
 " highlight ColorColumn ctermbg=18
 set textwidth=0
 set colorcolumn=80
-autocmd BufRead,BufNewFile *.md setlocal textwidth=0
-autocmd BufRead,BufNewFile *.md setlocal colorcolumn=0
+augroup filetype_markdown
+  autocmd!
+  " Match on the filename, not the filetype: vimwiki claims *.md as
+  " ft=vimwiki, so a FileType markdown hook never fires for them.
+  autocmd BufRead,BufNewFile *.md,*.markdown setlocal textwidth=0 colorcolumn=0 linebreak
+  autocmd FileType markdown setlocal textwidth=0 colorcolumn=0 linebreak
+augroup END
 
-" Enable folding
-set foldmethod=syntax
-set foldlevel=1
-" Don't fold by default when opening a file
+" Folding: manual only, nothing folded when a file opens.
+" (filetype_vim below switches vim files to marker folding.)
+set foldmethod=manual
 set foldlevelstart=99
 
 " Numbers
@@ -166,24 +172,27 @@ endif
 function! s:goyo_enter()
   " Disable plugins here
   ALEDisable
-  Copilot disable
+  if exists(':Copilot')
+    Copilot disable
+  endif
   Limelight
 endfunction
 function! s:goyo_leave()
   " Re-enable plugins here
   ALEEnable
-  Copilot enable
+  if exists(':Copilot')
+    Copilot enable
+  endif
   Limelight!
 endfunction
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup goyo_hooks
+  autocmd!
+  autocmd User GoyoEnter nested call <SID>goyo_enter()
+  autocmd User GoyoLeave nested call <SID>goyo_leave()
+augroup END
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+" Highlight the last used search pattern.
+set hlsearch
 " }}}
 
 " Mappings ---{{{
@@ -197,7 +206,7 @@ noremap <Leader>tt :tabnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
 noremap <Leader>t :call RunCurrentSpecFile()<CR>
 noremap <Leader>s :call RunNearestSpec()<CR>
-noremap <Leader>l :call RunLastSpec()<CR>
+noremap <Leader>tl :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 
 noremap <C-n> :NERDTreeToggle<CR>
@@ -326,9 +335,13 @@ augroup filetype_ruby
 augroup END
 augroup filetype_html
   autocmd!
-  autocmd BufWritePre,BufRead *.html :normal gg=G
+  " Reindent on write only - on read this would modify files just by
+  " opening them. Keep the cursor and view where they were.
+  autocmd BufWritePre *.html
+    \ let b:html_view = winsaveview() |
+    \ execute 'normal! gg=G' |
+    \ call winrestview(b:html_view)
 augroup END
-autocmd FileType markdown setlocal linebreak
 
 " Vimscript file settings ---{{{
 augroup filetype_vim
@@ -338,7 +351,10 @@ augroup END
 " }}}
 
 " automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
+augroup vim_resize
+  autocmd!
+  autocmd VimResized * :wincmd =
+augroup END
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -404,8 +420,4 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
   endif
 endif
-
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_use_caching = 1
 " }}}
