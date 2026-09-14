@@ -63,6 +63,7 @@ set autowrite     " Automatically :write before running commands
 set modelines=0   " Disable modelines as a security precaution
 set nomodeline
 set foldlevelstart=0 " Fold all folders when a new file is opened
+set foldmethod=manual
 set termguicolors " support true color terminal
 
 " For vim wiki
@@ -79,6 +80,7 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
+set list
 
 " Make it obvious where 80 characters is
 " highlight ColorColumn ctermbg=18
@@ -121,6 +123,9 @@ let g:ale_linters = {
 \}
 let g:ale_fix_on_save = 0
 let g:ale_lint_on_save = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_virtualtext_cursor = 'disabled'
