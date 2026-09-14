@@ -42,7 +42,7 @@ Create a file in `~/` called `.gitconfig_local` and add the values you don't wan
 - [Maccy](https://github.com/p0deje/Maccy) is a lightweight clipboard manager for macOS.
 - [tldr](https://github.com/tldr-pages/tldr) is a collection of community-maintained help pages for command-line tools.
 - [ag](https://github.com/ggreer/the_silver_searcher) a code searching tool, with a focus on speed.
-- [exa](https://github.com/ogham/exa) a modern replacement for `ls`.
+- [eza](https://github.com/eza-community/eza) a modern replacement for `ls`.
 - [bat](https://github.com/sharkdp/bat) a `cat` clone with syntax highlighting and Git integration.
 - [sd](https://github.com/chmln/sd) is an intuitive find & replace CLI.
 - [Delta](https://github.com/dandavison/delta) A syntax-highlighting pager for git, diff, and grep output

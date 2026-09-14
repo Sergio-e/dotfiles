@@ -1,7 +1,5 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/code/dotfiles/bin:$PATH";
-export PATH="/usr/local/opt/bison/bin:$PATH";
-export LDFLAGS="-L/usr/local/opt/bison/lib";
 
 export EDITOR="vim";
 export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -10,6 +8,7 @@ export MANPGER="sh -c 'col -bx | bat -l man -p'"
 
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH" # keg-only: psql, pg_config
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
@@ -81,7 +80,6 @@ eval "$(zoxide init bash)"
 
 # Git auto complete ---
 # brew install bash-completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 # Note: not working
