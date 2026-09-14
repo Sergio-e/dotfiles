@@ -14,10 +14,9 @@ Personal dotfiles repo for macOS. Config files are symlinked from this repo into
 - `nvim/` — Neovim config (Lua-based, packer, LSP via mason/lspconfig)
 - `tmux.conf` — Tmux config (prefix: `C-s`, gruvbox theme, vim-tmux-navigator, TPM plugins)
 - `gitconfig` — Git config (delta pager, aliases); user info loaded from `~/.gitconfig_local`
-- `alacritty.yml` — Terminal emulator config
+- `alacritty.toml` — Terminal emulator config (TOML; YAML support was dropped upstream)
 - `tmuxinator/` — Session templates (`rails.yml` takes a project name arg, `dotfiles.yml`)
 - `bin/tat` — Script to attach/create tmux session named after current directory
-- `src/fn-wall-e/` — Standalone project (not a dotfile)
 
 ## Key Conventions
 

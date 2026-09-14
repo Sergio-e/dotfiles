@@ -1,0 +1,138 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# Symlinked to ~/.config/alacritty/alacritty.toml
+
+[general]
+# Live config reload (changes require restart)
+live_config_reload = true
+
+[env]
+# Setup term for programs to be able to use it
+TERM = "alacritty"
+
+[window]
+# Spread additional padding evenly around the terminal content.
+dynamic_padding = true
+
+# Startup Mode (changes require restart)
+startup_mode = "Maximized"
+
+[font]
+size = 18.0
+
+# Offset is the extra space around each character. `offset.y` can be thought of
+# as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+offset = { x = 0, y = 4 }
+
+# Note: This requires RESTART
+# By default when you change the offset above you'll see an issue, where the texts
+# are bottom aligned with the cursor; this is to make sure they center align.
+# This offset should usually be 1/2 of the above offset.y being set.
+glyph_offset = { x = 0, y = 2 }
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Retina"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+# When set to `true`, selected text will be copied to the primary clipboard.
+save_to_clipboard = true
+
+# Custom key bindings. The Command-based ones drive tmux through its C-s prefix
+# (\u0013 is C-s). Reference:
+# https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/#make-alacritty-feel-like-iterm2
+
+# Command + [ - previous tmux window (C-s p)
+[[keyboard.bindings]]
+key = "LBracket"
+mods = "Command"
+chars = "\u0013p"
+
+# Command + ] - next tmux window (C-s n)
+[[keyboard.bindings]]
+key = "RBracket"
+mods = "Command"
+chars = "\u0013n"
+
+# ctrl-^ doesn't work in some terminals like alacritty
+[[keyboard.bindings]]
+key = "Key6"
+mods = "Control"
+chars = "\u001E"
+
+# Vim-style navigation
+[[keyboard.bindings]]
+key = "H"
+mods = "Alt"
+action = "ScrollToBottom"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Alt"
+action = "ScrollToTop"
+
+[[keyboard.bindings]]
+key = "J"
+mods = "Alt"
+action = "ScrollLineDown"
+
+[[keyboard.bindings]]
+key = "K"
+mods = "Alt"
+action = "ScrollLineUp"
+
+[[keyboard.bindings]]
+key = "U"
+mods = "Alt"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "D"
+mods = "Alt"
+action = "ScrollPageDown"
+
+# Copy mode (similar to Vim visual mode)
+[[keyboard.bindings]]
+key = "V"
+mods = "Alt"
+action = "ToggleViMode"
+
+# Colors (Gruvbox dark)
+[colors.primary]
+# hard contrast: background = "#1d2021"
+background = "#282828"
+# soft contrast: background = "#32302f"
+foreground = "#ebdbb2"
+
+[colors.normal]
+black   = "#282828"
+red     = "#cc241d"
+green   = "#98971a"
+yellow  = "#d79921"
+blue    = "#458588"
+magenta = "#b16286"
+cyan    = "#689d6a"
+white   = "#a89984"
+
+[colors.bright]
+black   = "#928374"
+red     = "#fb4934"
+green   = "#b8bb26"
+yellow  = "#fabd2f"
+blue    = "#83a598"
+magenta = "#d3869b"
+cyan    = "#8ec07c"
+white   = "#ebdbb2"
