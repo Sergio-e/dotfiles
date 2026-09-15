@@ -4,6 +4,11 @@ export PATH="$HOME/code/dotfiles/bin:$PATH";
 export EDITOR="vim";
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# macOS hands us LC_CTYPE=UTF-8 but leaves LANG empty, so every other LC_*
+# category has nothing to fall back to. bash-completion warns about
+# LC_COLLATE on that. Set it before anything sources completions below.
+export LANG="${LANG:-en_US.UTF-8}"
+
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Set PATH, MANPATH, etc., for Homebrew.
