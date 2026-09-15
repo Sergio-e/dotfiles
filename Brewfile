@@ -49,6 +49,7 @@ brew "sqlite-utils"
 brew "oha"
 brew "exercism"
 brew "anomalyco/tap/opencode"
+brew "pipx"                  # poetry and visidata live in pipx venvs
 
 # Ruby / Rails ----------------------------------------------------------
 brew "rbenv"                # bash_profile: eval "$(rbenv init -)"
