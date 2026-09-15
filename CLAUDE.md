@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal dotfiles repo for macOS. Config files are symlinked from this repo into their expected locations (e.g., `ln -s ~/code/dotfiles/tmux.conf ~/.tmux.conf`). There is no install script — symlinks are created manually.
+Personal dotfiles repo for macOS. Config files are symlinked from this repo into their expected locations. `./install.sh` creates every symlink idempotently and backs up anything real it would replace; `./install.sh --brew` also runs `brew bundle`, and `--all` adds tpm and vim-plug. The symlink map lives in the `link` calls in that script, so add new dotfiles there.
 
 ## Repository Structure
 
@@ -17,6 +17,8 @@ Personal dotfiles repo for macOS. Config files are symlinked from this repo into
 - `alacritty.toml` — Terminal emulator config (TOML; YAML support was dropped upstream)
 - `tmuxinator/` — Session templates (`rails.yml` takes a project name arg, `dotfiles.yml`)
 - `bin/tat` — Script to attach/create tmux session named after current directory
+- `Brewfile` — Packages these dotfiles reference; `brew bundle`. Curated by hand, not `brew bundle dump`
+- `install.sh` — Idempotent symlink + bootstrap script
 
 ## Key Conventions
 

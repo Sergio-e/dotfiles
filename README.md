@@ -1,5 +1,17 @@
 # Dotfiles
 
+## Install
+
+```sh
+git clone https://github.com/Sergio-e/dotfiles.git ~/code/dotfiles
+cd ~/code/dotfiles
+./install.sh --all   # symlinks, brew bundle, tpm, vim-plug
+```
+
+Re-running is safe. Anything real that would be overwritten is moved to
+`~/.dotfiles-backup/<timestamp>/` first. Put your git name and email in
+`~/.gitconfig_local`, which the script creates empty if it is missing.
+
 <!--toc:start-->
 
 - [Dotfiles](#dotfiles)
