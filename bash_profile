@@ -4,12 +4,11 @@ export PATH="$HOME/code/dotfiles/bin:$PATH";
 export EDITOR="vim";
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export MANPGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH" # keg-only: psql, pg_config
-export PATH="/opt/homebrew/bin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -72,21 +71,18 @@ elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
 
-# # Open new tab on working directory
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -n"
+# Share history across panes: append this shell's new lines, then read
+# what other shells have appended since the last prompt.
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a; history -n"
 
 eval "$(rbenv init -)"
 eval "$(zoxide init bash)"
 
-# Git auto complete ---
-# brew install bash-completion
-
-# Enable tab completion for `g` by marking it as an alias for `git`
-# Note: not working
-if type _git &> /dev/null; then
-	complete -o default -o nospace -F _git g;
+# Enable tab completion for the `g` alias. Completing an alias needs
+# __git_complete (from git's bash completion), not `complete -F _git`.
+if declare -F __git_complete > /dev/null; then
+	__git_complete g __git_main;
 fi;
-# --- Git auto complete
 
 # View git diff with bat ---
 gdiff() {
@@ -94,7 +90,7 @@ gdiff() {
 }
 # --- View git diff with bat
 
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # Created by `pipx` on 2025-04-26 15:08:22
 export PATH="$PATH:/Users/sergioalvarez/.local/bin"

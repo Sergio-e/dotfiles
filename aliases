@@ -10,9 +10,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cddot="cd ~/code/dotfiles/"
-alias cdsl="cd ~/code/rails/saverlife/"
 alias cdfn="cd ~/code/rails/fiscalnote-reporting/"
-
 
 # Git
 alias g='git'
@@ -44,7 +42,6 @@ alias rubo='bundle exec rubocop -a'
 
 # Tmuxinator
 alias muxfn='tmuxinator start rails fiscalnote-reporting'
-alias muxsl='tmuxinator start rails saverlife'
 alias muxdot='tmuxinator start dotfiles'
 alias muxr='tmuxinator start rails'
 
