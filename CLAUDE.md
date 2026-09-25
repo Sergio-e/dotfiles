@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal dotfiles repo for macOS. Config files are symlinked from this repo into their expected locations. `./install.sh` creates every symlink idempotently and backs up anything real it would replace; `./install.sh --brew` also runs `brew bundle`, and `--all` adds tpm and vim-plug. The symlink map lives in the `link` calls in that script, so add new dotfiles there.
+Personal dotfiles repo used on both macOS and Omarchy (Arch Linux). Config files are symlinked from this repo into their expected locations. `./install.sh` creates every symlink idempotently and backs up anything real it would replace; `./install.sh --brew` also runs `brew bundle` (macOS only), and `--all` adds tpm and vim-plug. The symlink map lives in the `link` calls in that script, so add new dotfiles there.
+
+Some links are intentionally disabled on Linux because the checked-in files are still macOS-era and haven't been migrated yet — see the commented-out block in `install.sh` (`bash_profile`, `nvim`, `alacritty.toml`). The Omarchy-only configs under `config/` (hypr, waybar, walker, starship) are Linux-only and have no macOS counterpart.
 
 ## Repository Structure
 
@@ -15,9 +17,10 @@ Personal dotfiles repo for macOS. Config files are symlinked from this repo into
 - `tmux.conf` — Tmux config (prefix: `C-s`, gruvbox theme, vim-tmux-navigator, TPM plugins)
 - `gitconfig` — Git config (delta pager, aliases); user info loaded from `~/.gitconfig_local`
 - `alacritty.toml` — Terminal emulator config (TOML; YAML support was dropped upstream)
+- `config/` — Omarchy/Linux desktop configs: `hypr/`, `waybar/`, `walker/`, `starship.toml`
 - `tmuxinator/` — Session templates (`rails.yml` takes a project name arg, `dotfiles.yml`)
 - `bin/tat` — Script to attach/create tmux session named after current directory
-- `Brewfile` — Packages these dotfiles reference; `brew bundle`. Curated by hand, not `brew bundle dump`
+- `Brewfile` — macOS package list; `brew bundle`. Curated by hand, not `brew bundle dump`. No Arch equivalent tracked — install with `pacman` as needed
 - `install.sh` — Idempotent symlink + bootstrap script
 
 ## Key Conventions
@@ -28,7 +31,8 @@ Personal dotfiles repo for macOS. Config files are symlinked from this repo into
 - **Indentation**: 2 spaces (tabs expanded)
 - **Color scheme**: Gruvbox dark throughout (vim, tmux, lightline/lualine)
 - **Git pager**: delta with custom decorations theme
-- **Shell**: Bash (not zsh), with Homebrew on Apple Silicon (`/opt/homebrew`)
+- **Shell**: Bash (not zsh). On macOS, Homebrew lives at `/opt/homebrew` (Apple Silicon); on Omarchy, system bash and pacman-installed tools
+- **Window manager (Linux)**: Hyprland via Omarchy, with waybar/walker; no equivalent on macOS
 - **Ruby tooling**: rbenv, bundler; linting via rubocop (through ALE in vim)
 - **Node tooling**: nvm with auto-switching via `.nvmrc` detection in `PROMPT_COMMAND`
 
