@@ -58,7 +58,6 @@ link() {
 
 step "Linking dotfiles"
 link aliases                 "$HOME/.aliases"
-link bash_profile            "$HOME/.bash_profile"
 link bash_prompt             "$HOME/.bash_prompt"
 link fzf.bash                "$HOME/.fzf.bash"
 link gitconfig               "$HOME/.gitconfig"
@@ -66,10 +65,20 @@ link gitignore               "$HOME/.gitignore"
 link git_template            "$HOME/.git_template"
 link tmux.conf               "$HOME/.tmux.conf"
 link vim/vimrc               "$HOME/.vimrc"
-link nvim                    "$HOME/.config/nvim"
-link alacritty.toml          "$HOME/.config/alacritty/alacritty.toml"
 link tmuxinator/dotfiles.yml "$HOME/.config/tmuxinator/dotfiles.yml"
 link tmuxinator/rails.yml    "$HOME/.config/tmuxinator/rails.yml"
+
+# Disabled on Linux: the macOS-era files in this repo don't match the
+# Omarchy setup. Migrate the Linux versions into the repo before re-enabling.
+# link bash_profile            "$HOME/.bash_profile"
+# link nvim                    "$HOME/.config/nvim"
+# link alacritty.toml          "$HOME/.config/alacritty/alacritty.toml"
+
+# Omarchy / Linux desktop configs (whole dirs).
+link config/hypr             "$HOME/.config/hypr"
+link config/waybar           "$HOME/.config/waybar"
+link config/walker           "$HOME/.config/walker"
+link config/starship.toml    "$HOME/.config/starship.toml"
 
 step "Git identity"
 # gitconfig deliberately carries no name/email; they live here and are not
