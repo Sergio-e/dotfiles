@@ -76,8 +76,6 @@ link tmuxinator/rails.yml    "$HOME/.config/tmuxinator/rails.yml"
 
 # Omarchy / Linux desktop configs (whole dirs).
 link config/hypr             "$HOME/.config/hypr"
-link config/waybar           "$HOME/.config/waybar"
-link config/walker           "$HOME/.config/walker"
 link config/starship.toml    "$HOME/.config/starship.toml"
 
 step "Git identity"
