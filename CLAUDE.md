@@ -15,6 +15,7 @@ Some links are intentionally disabled on Linux because the checked-in files are 
 - `vim/vimrc` — Vim config (vim-plug, gruvbox theme, ALE linting, vim-rspec, fzf)
 - `nvim/` — Neovim config (Lua-based, packer, LSP via mason/lspconfig)
 - `tmux.conf` — Tmux config (prefix: `C-s`, gruvbox theme, vim-tmux-navigator, TPM plugins)
+- `config/herdr/` — herdr config mirroring the tmux keys (prefix `C-s`); `navigate.sh` gives vim-aware `C-h/j/k/l` like vim-tmux-navigator
 - `gitconfig` — Git config (delta pager, aliases); user info loaded from `~/.gitconfig_local`
 - `alacritty.toml` — Terminal emulator config (TOML; YAML support was dropped upstream)
 - `config/` — Omarchy/Linux desktop configs: `hypr/` (Lua), `starship.toml`

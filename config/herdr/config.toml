@@ -1,0 +1,142 @@
+onboarding = false
+# Mirrors tmux.conf as closely as herdr allows.
+# tmux session -> herdr workspace, tmux window -> herdr tab, tmux pane -> herdr pane
+
+[theme]
+# Gruvbox dark, like the tmux status line
+name = "gruvbox"
+
+[terminal]
+# Matches -c "#{pane_current_path}" on splits
+new_cwd = "follow"
+
+[keys]
+# set -g prefix C-s. Pressing it twice sends a literal C-s (bind C-s send-prefix)
+prefix = "ctrl+s"
+
+# bind r source-file ~/.tmux.conf
+reload_config = "prefix+r"
+help = "prefix+?"
+detach = "prefix+d"
+copy_mode = "prefix+["
+
+# Splits: bind \ split-window -h / bind - split-window -v.
+# herdr names splits by the divider, so side-by-side is "vertical".
+split_vertical = "prefix+backslash"
+split_horizontal = "prefix+minus"
+
+close_pane = "prefix+x"
+zoom = "prefix+z"
+cycle_pane_next = "prefix+o"
+# tmux's prefix+; and the C-\ half of vim-tmux-navigator (not vim-aware here)
+last_pane = ["prefix+semicolon", "ctrl+backslash"]
+# tmux's { and } only swap by index; herdr swaps by direction
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+
+# Fine adjustment, like bind -n S-arrows resize-pane
+resize_pane_left = "shift+left"
+resize_pane_down = "shift+down"
+resize_pane_up = "shift+up"
+resize_pane_right = "shift+right"
+
+# tmux has no resize mode; moved off prefix+r, which is reload above
+resize_mode = "prefix+shift+r"
+
+rename_pane = "prefix+shift+p"
+
+# Windows -> tabs (base-index 1)
+new_tab = "prefix+c"
+rename_tab = "prefix+comma"
+close_tab = "prefix+&"
+switch_tab = "prefix+1..9"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+
+# Sessions -> workspaces
+workspace_picker = "prefix+w"
+goto = "prefix+s"
+new_workspace = "prefix+shift+c"
+rename_workspace = "prefix+$"
+close_workspace = "prefix+shift+d"
+previous_workspace = "prefix+("
+next_workspace = "prefix+)"
+
+# No tmux equivalent; moved off keys tmux uses (prefix+s, prefix+o)
+settings = "prefix+shift+s"
+open_notification_target = "prefix+shift+o"
+
+# vim-tmux-navigator: C-h/j/k/l go to vim when vim is in front, else move panes
+[[keys.command]]
+key = "ctrl+h"
+type = "shell"
+command = "~/.config/herdr/navigate.sh left"
+description = "vim-aware focus left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "shell"
+command = "~/.config/herdr/navigate.sh down"
+description = "vim-aware focus down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "shell"
+command = "~/.config/herdr/navigate.sh up"
+description = "vim-aware focus up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "shell"
+command = "~/.config/herdr/navigate.sh right"
+description = "vim-aware focus right"
+
+# Coarse adjustment, like bind -n C-arrows resize-pane. herdr resizes by a
+# fraction of the split rather than by cells.
+[[keys.command]]
+key = "ctrl+left"
+type = "shell"
+command = "herdr pane resize --pane \"$HERDR_ACTIVE_PANE_ID\" --direction left --amount 0.1"
+description = "resize left (coarse)"
+
+[[keys.command]]
+key = "ctrl+right"
+type = "shell"
+command = "herdr pane resize --pane \"$HERDR_ACTIVE_PANE_ID\" --direction right --amount 0.1"
+description = "resize right (coarse)"
+
+[[keys.command]]
+key = "ctrl+down"
+type = "shell"
+command = "herdr pane resize --pane \"$HERDR_ACTIVE_PANE_ID\" --direction down --amount 0.1"
+description = "resize down (coarse)"
+
+[[keys.command]]
+key = "ctrl+up"
+type = "shell"
+command = "herdr pane resize --pane \"$HERDR_ACTIVE_PANE_ID\" --direction up --amount 0.1"
+description = "resize up (coarse)"
+
+[ui]
+# tmux draws single-line dividers between panes and no outer frame
+pane_gaps = false
+pane_outer_borders = false
+pane_scrollbars = false
+
+# kill-window and kill-session never ask
+confirm_close = false
+
+# automatic-rename names windows without prompting
+prompt_new_tab_name = false
+
+# set -g mouse on
+mouse_capture = true
+
+# status-right: date, time, then #h
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "datetime", format = "%Y-%m-%d  %H:%M" },
+  { type = "hostname" },
+]
